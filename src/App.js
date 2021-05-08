@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MovieList from "./components/MovieList";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Search from './components/Search'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +52,7 @@ const App = () => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item sm={12} justify="center" container>
-          SearchBar
+          <Search />
         </Grid>
         <Grid item sm={12} md={6}>
           <MovieList movies={movies} />
