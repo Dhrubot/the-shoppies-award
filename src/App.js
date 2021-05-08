@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import MovieList from './components/MovieList';
 
 const App = () => {
   const [movies, setmovies] = useState([
@@ -33,8 +34,8 @@ const App = () => {
   ]);
   
   return (
-    <div className="App">
-      
+    <div>
+      <MovieList movies={movies}/>
     </div>
   )
 }
