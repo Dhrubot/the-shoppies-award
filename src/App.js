@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import MovieList from './components/MovieList';
+import { Grid } from "@material-ui/core"
 
 const App = () => {
   const [movies, setmovies] = useState([
@@ -34,9 +35,21 @@ const App = () => {
   ]);
   
   return (
-    <div>
-      <MovieList movies={movies}/>
-    </div>
+      <Grid container spacing={2}>
+        <Grid
+          item
+          xs={12}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          SearchBar
+        </Grid>
+        <Grid item xs>
+          <MovieList movies={movies}/>
+        </Grid>
+        <Grid item xs>
+          UserList
+        </Grid>
+      </Grid>
   )
 }
 
