@@ -23,15 +23,18 @@ const useStyles = makeStyles({
     height: 250,
     display: "block",
     paddingTop: "56.25%",
-    // marginTop: "10px",
   },
   cardHeader: {
     color: "white",
     backgroundColor: "rgba 0 0 0 0.1",
   },
+  cardSubheader: {
+      textAlign: 'center',
+      fontWeight: 'bold'
+  }
 });
 
-const MovieCard = ({ movie, nominateMovie, nominatedMovies }) => {
+const MovieCard = ({ movie }) => {
   const classes = useStyles();
 
   // default movie poster
@@ -50,6 +53,9 @@ const MovieCard = ({ movie, nominateMovie, nominatedMovies }) => {
             >
               {movie.Title}
             </Typography>
+            <Typography variant="body2" component="p" className={classes.cardSubheader}>
+                  {movie.Year}
+                </Typography>
           </CardContent>
         </CardActionArea>
       </CardActions>

@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import MovieCard from "./MovieCard";
+import Pagination from "@material-ui/lab/Pagination";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +24,7 @@ const MovieList = (props) => {
   return (
         <Grid container spacing={1} className={classes.moviesListContainer}>
             {props.movies.map((movie, idx) => (
-          <Grid item sm={12} md={6} key={idx}>
+          <Grid item key={idx}>
             <MovieCard movie={movie}/>
           </Grid>
       ))}

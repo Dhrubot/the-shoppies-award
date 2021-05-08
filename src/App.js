@@ -2,14 +2,8 @@ import React, { useState } from "react";
 import MovieList from "./components/MovieList";
 import { Grid, CssBaseline, createMuiTheme  } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
-import { makeStyles } from "@material-ui/core/styles";
 import Search from './components/Search'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-}));
 
 const theme = createMuiTheme({
   palette: {
@@ -53,24 +47,24 @@ const App = () => {
     },
   ]);
 
-  const classes = useStyles();
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item sm={12} justify="center" container>
+      <Grid container spacing={1}>
+      <Grid
+          item
+          xs={12}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
           <Search />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} sm={6} md={8} lg={8} xl={8}>
           <MovieList movies={movies} />
         </Grid>
-        <Grid item sm={12} md={6}>
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
           UserList
         </Grid>
       </Grid>
-    </div>
     </ThemeProvider>
   );
 };
