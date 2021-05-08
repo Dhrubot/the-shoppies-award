@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MovieList from "./components/MovieList";
-import { Grid } from "@material-ui/core";
+import { Grid, CssBaseline, createMuiTheme  } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 import { makeStyles } from "@material-ui/core/styles";
 import Search from './components/Search'
 
@@ -9,6 +10,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+  },
+});
 
 const App = () => {
   const [movies, setmovies] = useState([
@@ -49,6 +56,8 @@ const App = () => {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item sm={12} justify="center" container>
@@ -62,6 +71,7 @@ const App = () => {
         </Grid>
       </Grid>
     </div>
+    </ThemeProvider>
   );
 };
 
