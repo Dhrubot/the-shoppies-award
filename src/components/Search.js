@@ -34,7 +34,6 @@ const Search = () => {
   const classes = useStyles();
 
   return (
-    <>
       <Card className={classes.containerCard}>
         <form style={{ width: "100%" }}>
           <Input
@@ -49,7 +48,6 @@ const Search = () => {
           />
         </form>
       </Card>
-    </>
   );
 };
 
