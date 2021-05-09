@@ -18,12 +18,14 @@ const theme = createMuiTheme({
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalResult, setTotalResult] = useState(0);
 
   useEffect(() => {
-    getMovies(searchValue);
-  }, [searchValue]);
+    getMovies(searchValue, page);
+  },[searchValue, page]);
 
-  const getMovies = (searchValue) => {
+  const getMovies = (searchValue, page) => {
     if (searchValue === "") {
       setMovies([]);
     }
@@ -34,18 +36,27 @@ const App = () => {
       ? fetch(`${BASE_URL}&t=${searchValue}`)
           .then((response) => response.json())
           .then((jsonResponse) => {
-            setMovies([jsonResponse]);
+            const movies = [jsonResponse]
+            setMovies(movies);
+            setTotalResult(movies.length);
           })
           .catch((e) => {
             console.log(e);
           })
-      : fetch(`${BASE_URL}&s=${searchValue}`)
+      : fetch(`${BASE_URL}&s=${searchValue}&page=${page}`)
           .then((response) => response.json())
           .then((jsonResponse) => {
             if (jsonResponse.Response === "True") {
               setMovies(jsonResponse.Search);
+              setTotalResult(jsonResponse.totalResults);
             }
           });
+  };
+
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    getMovies(searchValue, page);
   };
 
   return (
@@ -60,7 +71,13 @@ const App = () => {
           <Search search={setSearchValue} value={searchValue} />
         </Grid>
         <Grid item xs={12} sm={6} md={8} lg={8} xl={8}>
-          <MovieList movies={movies} header="Movies" />
+          <MovieList
+            movies={movies}
+            header="Movies"
+            page={page}
+            handlePageChange={handlePageChange}
+            totalResult={totalResult}
+          />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
           UserList

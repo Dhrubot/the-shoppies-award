@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Box } from "@material-ui/core";
 import MovieCard from "./MovieCard";
 import MovieListHeader from "./MovieListHeader";
+import Pagination from "@material-ui/lab/Pagination";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,12 +22,23 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "start",
+    alignItems: "center",
   },
 }));
 
-const MovieList = ({ movies, header }) => {
+const MovieList = ({ movies, header, page, handlePageChange, totalResult }) => {
   const classes = useStyles();
+  const pagination = movies?.length ? (
+    <Pagination
+      style={{ marginBottom: "10px" }}
+      page={page}
+      count={Math.ceil(totalResult / 10)}
+      onChange={handlePageChange}
+    />
+  ) : (
+    ""
+  );
+
   return (
     <Box className={classes.rootContainer}>
       <MovieListHeader header={header} />
@@ -37,6 +49,7 @@ const MovieList = ({ movies, header }) => {
           </Grid>
         ))}
       </Grid>
+      <Grid style={{ margin: 14 }}>{pagination}</Grid>
     </Box>
   );
 };
