@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import DefaultImg from "../images/NoImage.jpg";
+import DefaultImg from "../../images/NoImage.jpg";
 import {
   CardMedia,
   CardContent,

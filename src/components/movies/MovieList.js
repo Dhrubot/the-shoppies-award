@@ -4,7 +4,7 @@ import { Grid, Box, Card, CardContent } from "@material-ui/core";
 import MovieCard from "./MovieCard";
 import MovieListHeader from "./MovieListHeader";
 import Pagination from "@material-ui/lab/Pagination";
-import { SnackbarProvider } from "notistack";
+import EmptyList from '../../layouts/EmptyList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,9 +64,9 @@ const MovieList = ({
   );
 
   return (
-    <SnackbarProvider>
     <Box className={classes.rootContainer}>
       <MovieListHeader header={header} />
+      {!movies.length && <EmptyList text={header}/>}
       {header === "Nomination List" && nominatedMoviesCount > 0 && <Box className={classes.nominationCount}>{nominatedMoviesCount}/5</Box>}
       <Grid container spacing={1} className={classes.moviesListContainer}>
         {movies.map((movie, idx) => (
@@ -82,7 +82,6 @@ const MovieList = ({
       </Grid>
       {header === "movies" && <Grid style={{ margin: 14 }}>{pagination}</Grid>}
     </Box>
-    </SnackbarProvider>
   );
 };
 

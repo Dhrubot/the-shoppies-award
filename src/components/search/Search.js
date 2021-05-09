@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     paddingLeft: "30px",
     paddingRight: "30px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 14,
+      paddingLeft: '0.8rem',
+      paddingRight: "0.8rem",
+    }
   },
   containerCard: {
     width: "50%",
@@ -26,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
       width: "70%",
+      padding: '1rem 0'
     },
+    padding: '2rem'
   },
 }));
 
@@ -39,7 +46,7 @@ const Search = ({ search, value }) => {
         <form style={{ width: "100%" }}>
           <Input
             className={classes.input}
-            placeholder="Search"
+            placeholder="Search for movies..."
             value={value}
             onChange={(event) => search(event.target.value)}
             disableUnderline
