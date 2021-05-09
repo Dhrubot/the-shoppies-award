@@ -5,7 +5,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import Search from "./components/Search";
 import AddNominationComponent from './components/AddNominationButton'
 import RemoveNominationButton from './components/RemoveNominationButton'
-import red from "@material-ui/core/colors/red";
+import { useSnackbar } from "notistack";
 
 const theme = createMuiTheme({
   palette: {
@@ -26,6 +26,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [totalResult, setTotalResult] = useState(0);
   const [nominatedMovieList, setNominatedMovieList] = useState([]);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     getMovies(searchValue, page);
@@ -76,8 +77,18 @@ const App = () => {
 
   const addNomination = movie => {
     const newNominationList = [...nominatedMovieList, movie];
-    setNominatedMovieList(newNominationList);
-    saveToLocalStorage(newNominationList);
+    const errorMessage = "Remove maximum number of nominations";
+    const successMessage = "Great choice! You have reached the maximum 5 nominations";
+
+    if ( nominatedMovieList.length < 5 ) {
+      setNominatedMovieList(newNominationList)
+      saveToLocalStorage(newNominationList)
+    } 
+    if (nominatedMovieList.length === 4) {
+      enqueueSnackbar(successMessage, { variant: "success" }) 
+    }  else if (nominatedMovieList.length === 5) {
+      enqueueSnackbar(errorMessage, { variant: "error" }) 
+    }
   };
 
   const removeNomination = movie => {
@@ -98,6 +109,7 @@ const App = () => {
         >
           <Search search={setSearchValue} value={searchValue} />
         </Grid>
+        {console.log(nominatedMovieList.length)}
         <Grid item xs={12} sm={6} md={8} lg={8} xl={8}>
           <MovieList
             movies={movies}

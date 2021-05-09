@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SnackbarProvider } from 'notistack';
+import Fade from '@material-ui/core/Fade';
 
 ReactDOM.render(
-  <React.StrictMode>
+    <SnackbarProvider
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+        preventDuplicate
+        TransitionComponent={Fade}
+    >
     <App />
-  </React.StrictMode>,
+    </SnackbarProvider>,
   document.getElementById('root')
 );
 
