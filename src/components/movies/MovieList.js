@@ -49,6 +49,7 @@ const MovieList = ({
   nominationComponent,
   handleNominationClick,
   nominatedMoviesCount,
+  nominatedMovies
 }) => {
   const classes = useStyles();
   const NominationComponet = nominationComponent;
@@ -72,9 +73,9 @@ const MovieList = ({
         {movies.map((movie, idx) => (
           <Grid item key={idx}>
             <Card className={classes.card}>
-              <MovieCard movie={movie} />
+              <MovieCard movie={movie}/>
               <CardContent onClick={() => handleNominationClick(movie)}>
-                <NominationComponet />
+                <NominationComponet disable={nominatedMovies?.includes(movie)}/>
               </CardContent>
             </Card>
           </Grid>

@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   }
 });
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, nominatedMovies }) => {
   const classes = useStyles();
 
   // default movie poster

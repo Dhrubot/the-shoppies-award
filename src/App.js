@@ -30,9 +30,11 @@ const App = () => {
   const [nominatedMovieList, setNominatedMovieList] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
 
+
   useEffect(() => {
     getMovies(searchValue, page);
   },[searchValue, page]);
+
 
   const saveToLocalStorage = (movies) => {
     localStorage.setItem("nominatedMovies", JSON.stringify(movies));
@@ -78,11 +80,11 @@ const App = () => {
   };
 
   const addNomination = movie => {
-    const newNominationList = [...nominatedMovieList, movie];
+    const newNominationList = nominatedMovieList.includes(movie) ? [...nominatedMovieList] :[...nominatedMovieList, movie];
     const errorMessage = "Remove movies from nomination list to add new nominations";
     const successMessage = "Great choices! You have reached the maximum 5 nominations";
 
-    if ( nominatedMovieList.length < 5 ) {
+    if ( nominatedMovieList.length < 5) {
       setNominatedMovieList(newNominationList)
       saveToLocalStorage(newNominationList)
     } 
@@ -97,7 +99,6 @@ const App = () => {
     const newNominationList = nominatedMovieList.filter(nominatedMovie => nominatedMovie.imdbID !== movie.imdbID);
     setNominatedMovieList(newNominationList);
     saveToLocalStorage(newNominationList)
-
   }
 
   return (
@@ -121,6 +122,7 @@ const App = () => {
             totalResult={totalResult}
             handleNominationClick={addNomination}
             nominationComponent={AddNominationComponent}
+            nominatedMovies={nominatedMovieList}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
