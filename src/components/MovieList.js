@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
+  nominationCount: {
+    fontWeight: "bold"
+  }
 }));
 
 const MovieList = ({
@@ -40,6 +43,7 @@ const MovieList = ({
   totalResult,
   nominationComponent,
   handleNominationClick,
+  nominatedMoviesCount,
 }) => {
   const classes = useStyles();
   const NominationComponet = nominationComponent;
@@ -57,6 +61,7 @@ const MovieList = ({
   return (
     <Box className={classes.rootContainer}>
       <MovieListHeader header={header} />
+      {header === "Nomination List" && nominatedMoviesCount > 0 && <Box className={classes.nominationCount}>{nominatedMoviesCount}/5</Box>}
       <Grid container spacing={1} className={classes.moviesListContainer}>
         {movies.map((movie, idx) => (
           <Grid item key={idx}>
@@ -69,7 +74,7 @@ const MovieList = ({
           </Grid>
         ))}
       </Grid>
-      <Grid style={{ margin: 14 }}>{pagination}</Grid>
+      {header === "movies" && <Grid style={{ margin: 14 }}>{pagination}</Grid>}
     </Box>
   );
 };

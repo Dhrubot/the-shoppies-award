@@ -28,6 +28,15 @@ const App = () => {
     getMovies(searchValue, page);
   },[searchValue, page]);
 
+  const saveToLocalStorage = (movies) => {
+    localStorage.setItem("nominatedMovies", JSON.stringify(movies));
+  }
+
+  useEffect(() => {
+    const savedNominations = JSON.parse(localStorage.getItem('nominatedMovies'));
+    setNominatedMovieList(savedNominations);
+  }, [])
+
   const getMovies = (searchValue, page) => {
     if (searchValue === "") {
       setMovies([]);
@@ -65,11 +74,13 @@ const App = () => {
   const addNomination = movie => {
     const newNominationList = [...nominatedMovieList, movie];
     setNominatedMovieList(newNominationList);
+    saveToLocalStorage(newNominationList);
   };
 
   const removeNomination = movie => {
     const newNominationList = nominatedMovieList.filter(nominatedMovie => nominatedMovie.imdbID !== movie.imdbID);
     setNominatedMovieList(newNominationList);
+    saveToLocalStorage(newNominationList)
 
   }
 
@@ -102,6 +113,7 @@ const App = () => {
             handlePageChange={handlePageChange}
             handleNominationClick={removeNomination}
             nominationComponent={RemoveNominationButton}
+            nominatedMoviesCount={nominatedMovieList.length}
           />
         </Grid>
       </Grid>
