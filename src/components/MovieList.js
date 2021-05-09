@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     width: 250,
     height: 400,
     margin: "auto",
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    // backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
   nominationCount: {
     fontWeight: "bold"

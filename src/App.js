@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MovieList from "./components/MovieList";
 import { Grid, CssBaseline, createMuiTheme } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import Search from "./components/Search";
 import AddNominationComponent from './components/AddNominationButton'
 import RemoveNominationButton from './components/RemoveNominationButton'
@@ -9,12 +9,15 @@ import red from "@material-ui/core/colors/red";
 
 const theme = createMuiTheme({
   palette: {
-    type: "dark",
-    primary: red,
-    secondary: {
-      main: "#b9f6ca",
+    type: 'dark',
+    background: {
+      default: "#1a1f36",
+      paper: '#272b3a'
     },
-  },
+    text: {
+      primary: '#a2b2c4'
+    }
+  }
 });
 
 const App = () => {
@@ -85,7 +88,7 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Grid container spacing={1}>
         <Grid
@@ -117,7 +120,7 @@ const App = () => {
           />
         </Grid>
       </Grid>
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 };
 
