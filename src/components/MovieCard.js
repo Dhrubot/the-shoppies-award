@@ -2,12 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import DefaultImg from "../images/NoImage.jpg";
 import {
-  Card,
   CardMedia,
   CardContent,
   CardActions,
   CardActionArea,
-  Button,
   Typography,
 } from "@material-ui/core";
 
@@ -41,7 +39,6 @@ const MovieCard = ({ movie }) => {
   const poster = movie?.Poster === "N/A" ? DefaultImg : movie.Poster;
 
   return (
-    <Card className={classes.card} key={movie.imdbID}>
       <CardActions >
         <CardActionArea>
           <CardMedia className={classes.cardMedia} image={poster} />
@@ -59,16 +56,6 @@ const MovieCard = ({ movie }) => {
           </CardContent>
         </CardActionArea>
       </CardActions>
-      <CardContent>
-        <Button
-          fullWidth
-          variant="contained"
-          style={{ color: "red" }}
-        >
-          NOMINATE
-        </Button>
-      </CardContent>
-    </Card>
   );
 };
 

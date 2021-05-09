@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Card, CardContent } from "@material-ui/core";
 import MovieCard from "./MovieCard";
 import MovieListHeader from "./MovieListHeader";
 import Pagination from "@material-ui/lab/Pagination";
@@ -24,10 +24,25 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  card: {
+    width: 250,
+    height: 400,
+    margin: "auto",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+  },
 }));
 
-const MovieList = ({ movies, header, page, handlePageChange, totalResult }) => {
+const MovieList = ({
+  movies,
+  header,
+  page,
+  handlePageChange,
+  totalResult,
+  nominationComponent,
+  handleAddNomination,
+}) => {
   const classes = useStyles();
+  const NominationComponet = nominationComponent;
   const pagination = movies?.length ? (
     <Pagination
       style={{ marginBottom: "10px" }}
@@ -45,7 +60,12 @@ const MovieList = ({ movies, header, page, handlePageChange, totalResult }) => {
       <Grid container spacing={1} className={classes.moviesListContainer}>
         {movies.map((movie, idx) => (
           <Grid item key={idx}>
-            <MovieCard movie={movie} />
+            <Card className={classes.card}>
+              <MovieCard movie={movie} />
+              <CardContent onClick={() => handleAddNomination(movie)}>
+                <NominationComponet />
+              </CardContent>
+            </Card>
           </Grid>
         ))}
       </Grid>

@@ -3,6 +3,7 @@ import MovieList from "./components/MovieList";
 import { Grid, CssBaseline, createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import Search from "./components/Search";
+import AddNominationComponent from './components/AddNominationComponet'
 import red from "@material-ui/core/colors/red";
 
 const theme = createMuiTheme({
@@ -20,6 +21,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [page, setPage] = useState(1);
   const [totalResult, setTotalResult] = useState(0);
+  const [nominatedMovieList, setNominatedMovieList] = useState([]);
 
   useEffect(() => {
     getMovies(searchValue, page);
@@ -59,6 +61,11 @@ const App = () => {
     getMovies(searchValue, page);
   };
 
+  const addNomination = movie => {
+    const newNominationList = [...nominatedMovieList, movie];
+    setNominatedMovieList(newNominationList);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -77,6 +84,8 @@ const App = () => {
             page={page}
             handlePageChange={handlePageChange}
             totalResult={totalResult}
+            handleAddNomination={addNomination}
+            nominationComponent={AddNominationComponent}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
