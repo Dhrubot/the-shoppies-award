@@ -1,16 +1,16 @@
 import React from 'react'
 import { Button } from '@material-ui/core'
 
-const AddNominationComponet = () => {
+const RemoveNominationButton = () => {
     return (
         <Button
           fullWidth
           variant="contained"
           style={{ color: "red" }}
         >
-          NOMINATE
+          Remove Nomination
         </Button>
     )
 }
 
-export default AddNominationComponet;
+export default RemoveNominationButton

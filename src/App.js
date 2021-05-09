@@ -3,7 +3,8 @@ import MovieList from "./components/MovieList";
 import { Grid, CssBaseline, createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import Search from "./components/Search";
-import AddNominationComponent from './components/AddNominationComponet'
+import AddNominationComponent from './components/AddNominationButton'
+import RemoveNominationButton from './components/RemoveNominationButton'
 import red from "@material-ui/core/colors/red";
 
 const theme = createMuiTheme({
@@ -66,6 +67,12 @@ const App = () => {
     setNominatedMovieList(newNominationList);
   };
 
+  const removeNomination = movie => {
+    const newNominationList = nominatedMovieList.filter(nominatedMovie => nominatedMovie.imdbID !== movie.imdbID);
+    setNominatedMovieList(newNominationList);
+
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -84,12 +91,18 @@ const App = () => {
             page={page}
             handlePageChange={handlePageChange}
             totalResult={totalResult}
-            handleAddNomination={addNomination}
+            handleNominationClick={addNomination}
             nominationComponent={AddNominationComponent}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
-          UserList
+        <MovieList
+            movies={nominatedMovieList}
+            header="Nomination List"
+            handlePageChange={handlePageChange}
+            handleNominationClick={removeNomination}
+            nominationComponent={RemoveNominationButton}
+          />
         </Grid>
       </Grid>
     </ThemeProvider>

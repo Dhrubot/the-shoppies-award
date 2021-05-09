@@ -39,7 +39,7 @@ const MovieList = ({
   handlePageChange,
   totalResult,
   nominationComponent,
-  handleAddNomination,
+  handleNominationClick,
 }) => {
   const classes = useStyles();
   const NominationComponet = nominationComponent;
@@ -62,7 +62,7 @@ const MovieList = ({
           <Grid item key={idx}>
             <Card className={classes.card}>
               <MovieCard movie={movie} />
-              <CardContent onClick={() => handleAddNomination(movie)}>
+              <CardContent onClick={() => handleNominationClick(movie)}>
                 <NominationComponet />
               </CardContent>
             </Card>
