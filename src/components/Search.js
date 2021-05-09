@@ -30,14 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = ({ search }) => {
+const Search = ({ search, value }) => {
   const classes = useStyles();
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleSearchInputChanges = (e) => {
-    setSearchValue(e.target.value);
-    search(searchValue);
-  }
   
 
   return (
@@ -46,8 +40,8 @@ const Search = ({ search }) => {
           <Input
             className={classes.input}
             placeholder="Search"
-            value={searchValue}
-            onChange={handleSearchInputChanges}
+            value={value}
+            onChange={(event) => search(event.target.value)}
             disableUnderline
             startAdornment={
               <InputAdornment position="start">

@@ -16,46 +16,40 @@ const theme = createMuiTheme({
   },
 });
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=a48618b7";
-
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
 
     useEffect(() => {
-    fetch(MOVIE_API_URL)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        setMovies(jsonResponse.Search);
-        setLoading(false);
-      });
-  }, []);
+      getMovies(searchValue);
+  }, [searchValue]);
 
-    const search = searchValue => {
+    const getMovies = async (searchValue) => {
+      if (searchValue === '') {
+        setMovies([]);
+      }
     setLoading(true);
-    setErrorMessage(null);
 
     searchValue.length && searchValue.length < 3 ? 
-    fetch(`https://www.omdbapi.com/?&type=movie&t=${searchValue}&apikey=a48618b7`) 
+    await fetch(`https://www.omdbapi.com/?&type=movie&t=${searchValue}&apikey=a48618b7`) 
     .then(response => response.json())
     .then(jsonResponse => {
       setMovies([jsonResponse]);
       setLoading(false);
     })
     .catch(e => {
-      setErrorMessage(e);
       setLoading(false);
     })
       :
-    fetch(`https://www.omdbapi.com/?&type=movie&s=${searchValue}&apikey=a48618b7`) 
+    await fetch(`https://www.omdbapi.com/?&type=movie&s=${searchValue}&apikey=a48618b7`) 
       .then(response => response.json())
       .then(jsonResponse => {
         if (jsonResponse.Response === "True") {
           setMovies(jsonResponse.Search);
           setLoading(false);
         } else {
-          setErrorMessage(jsonResponse.Error);
+    
           setLoading(false);
         }
       });
@@ -71,7 +65,7 @@ const App = () => {
           xs={12}
           style={{ display: "flex", justifyContent: "center" }}
         >
-          <Search search={search}/>
+          <Search search={setSearchValue} value={searchValue}/>
         </Grid>
         <Grid item xs={12} sm={6} md={8} lg={8} xl={8}>
           <MovieList movies={movies} header='Movies' />
