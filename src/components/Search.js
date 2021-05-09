@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, Input, InputAdornment } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
@@ -30,8 +30,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = () => {
+const Search = ({ search }) => {
   const classes = useStyles();
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearchInputChanges = (e) => {
+    setSearchValue(e.target.value);
+    search(searchValue);
+  }
+  
 
   return (
       <Card className={classes.containerCard}>
@@ -39,6 +46,8 @@ const Search = () => {
           <Input
             className={classes.input}
             placeholder="Search"
+            value={searchValue}
+            onChange={handleSearchInputChanges}
             disableUnderline
             startAdornment={
               <InputAdornment position="start">
