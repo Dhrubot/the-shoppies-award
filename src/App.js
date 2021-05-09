@@ -7,6 +7,7 @@ import AddNominationComponent from './components/AddNominationButton'
 import RemoveNominationButton from './components/RemoveNominationButton'
 import { useSnackbar } from "notistack";
 import { Header } from "./components/Header";
+import Footer from "./components/Footer"
 
 const theme = createMuiTheme({
   palette: {
@@ -134,6 +135,7 @@ const App = () => {
           />
         </Grid>
       </Grid>
+      <Footer />
     </MuiThemeProvider>
   );
 };
