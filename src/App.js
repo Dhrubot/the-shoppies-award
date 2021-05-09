@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import AddNominationComponent from './components/AddNominationButton'
 import RemoveNominationButton from './components/RemoveNominationButton'
 import { useSnackbar } from "notistack";
+import { Header } from "./components/Header";
 
 const theme = createMuiTheme({
   palette: {
@@ -101,6 +102,7 @@ const App = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
+      <Header />
       <Grid container spacing={1}>
         <Grid
           item

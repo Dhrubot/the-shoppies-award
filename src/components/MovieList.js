@@ -23,13 +23,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "start",
+    padding: '2rem 0 0 2rem',
+    [theme.breakpoints.down("sm")]: {
+      alignItems: 'center',
+      padding: 0
+    }
   },
   card: {
     width: 250,
     height: 400,
     margin: "auto",
-    // backgroundColor: "rgba(0, 0, 0, 0.1)",
   },
   nominationCount: {
     fontWeight: "bold"
