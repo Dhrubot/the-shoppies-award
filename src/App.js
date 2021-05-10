@@ -42,7 +42,7 @@ const App = () => {
 
   useEffect(() => {
     const savedNominations = JSON.parse(localStorage.getItem('nominatedMovies'));
-    setNominatedMovieList(savedNominations);
+    savedNominations ? setNominatedMovieList(savedNominations) : setNominatedMovieList([])
   }, [])
 
   const getMovies = (searchValue, page) => {
@@ -80,7 +80,7 @@ const App = () => {
   };
 
   const addNomination = movie => {
-    const newNominationList = nominatedMovieList.includes(movie) ? [...nominatedMovieList] :[...nominatedMovieList, movie];
+    const newNominationList = nominatedMovieList?.includes(movie) ? nominatedMovieList :[...nominatedMovieList, movie];
     const errorMessage = "Remove movies from nomination list to add new nominations";
     const successMessage = "Great choices! You have reached the maximum 5 nominations";
 
@@ -123,6 +123,7 @@ const App = () => {
             handleNominationClick={addNomination}
             nominationComponent={AddNominationComponent}
             nominatedMovies={nominatedMovieList}
+            addNomination={addNomination}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} xl={4}>
@@ -132,7 +133,7 @@ const App = () => {
             handlePageChange={handlePageChange}
             handleNominationClick={removeNomination}
             nominationComponent={RemoveNominationButton}
-            nominatedMoviesCount={nominatedMovieList.length}
+            nominatedMovies={nominatedMovieList}
           />
         </Grid>
       </Grid>

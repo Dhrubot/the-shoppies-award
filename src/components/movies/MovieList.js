@@ -48,8 +48,8 @@ const MovieList = ({
   totalResult,
   nominationComponent,
   handleNominationClick,
-  nominatedMoviesCount,
-  nominatedMovies
+  nominatedMovies,
+  addNomination
 }) => {
   const classes = useStyles();
   const NominationComponet = nominationComponent;
@@ -67,10 +67,10 @@ const MovieList = ({
   return (
     <Box className={classes.rootContainer}>
       <MovieListHeader header={header} />
-      {!movies.length && <EmptyList text={header}/>}
-      {header === "Nomination List" && nominatedMoviesCount > 0 && <Box className={classes.nominationCount}>{nominatedMoviesCount}/5</Box>}
+      {movies && !movies.length && <EmptyList text={header}/>}
+      {header === "Nomination List" && nominatedMovies?.length > 0 && <Box className={classes.nominationCount}>{nominatedMovies?.length}/5</Box>}
       <Grid container spacing={1} className={classes.moviesListContainer}>
-        {movies.map((movie, idx) => (
+        {movies?.map((movie, idx) => (
           <Grid item key={idx}>
             <Card className={classes.card}>
               <MovieCard movie={movie}/>
