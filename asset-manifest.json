@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/the-shoppies-award/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/the-shoppies-award/static/js/main.ef949a1a.chunk.js",
-    "main.js.map": "/the-shoppies-award/static/js/main.ef949a1a.chunk.js.map",
+    "main.js": "/the-shoppies-award/static/js/main.35de6b29.chunk.js",
+    "main.js.map": "/the-shoppies-award/static/js/main.35de6b29.chunk.js.map",
     "runtime-main.js": "/the-shoppies-award/static/js/runtime-main.ee5b6b69.js",
     "runtime-main.js.map": "/the-shoppies-award/static/js/runtime-main.ee5b6b69.js.map",
-    "static/js/2.031a25d1.chunk.js": "/the-shoppies-award/static/js/2.031a25d1.chunk.js",
-    "static/js/2.031a25d1.chunk.js.map": "/the-shoppies-award/static/js/2.031a25d1.chunk.js.map",
+    "static/js/2.ae347639.chunk.js": "/the-shoppies-award/static/js/2.ae347639.chunk.js",
+    "static/js/2.ae347639.chunk.js.map": "/the-shoppies-award/static/js/2.ae347639.chunk.js.map",
     "static/js/3.f50d62d2.chunk.js": "/the-shoppies-award/static/js/3.f50d62d2.chunk.js",
     "static/js/3.f50d62d2.chunk.js.map": "/the-shoppies-award/static/js/3.f50d62d2.chunk.js.map",
     "index.html": "/the-shoppies-award/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/the-shoppies-award/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.031a25d1.chunk.js.LICENSE.txt": "/the-shoppies-award/static/js/2.031a25d1.chunk.js.LICENSE.txt",
+    "static/js/2.ae347639.chunk.js.LICENSE.txt": "/the-shoppies-award/static/js/2.ae347639.chunk.js.LICENSE.txt",
     "static/media/NoImage.e17fd2f9.jpg": "/the-shoppies-award/static/media/NoImage.e17fd2f9.jpg",
     "static/media/background.2735a66c.jpg": "/the-shoppies-award/static/media/background.2735a66c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ee5b6b69.js",
-    "static/js/2.031a25d1.chunk.js",
+    "static/js/2.ae347639.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.ef949a1a.chunk.js"
+    "static/js/main.35de6b29.chunk.js"
   ]
 }
