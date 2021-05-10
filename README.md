@@ -4,7 +4,7 @@
 ![ScreenShot](src/images/Screenshot.png)
 
 Check out the Live Build here.
-https://dhrubot.github.io/the-shoppies/
+http://dhrubot.github.io/the-shoppies-award"
 
 
 The Shoppies is a movie award that Shopify gives to Enterpreneurs(not really!). Users can use this website to find and nominate the movies that they like for the award. 
