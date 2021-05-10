@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/the-shoppies-award/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/the-shoppies-award/static/js/main.16405f54.chunk.js",
-    "main.js.map": "/the-shoppies-award/static/js/main.16405f54.chunk.js.map",
+    "main.js": "/the-shoppies-award/static/js/main.d4d7328f.chunk.js",
+    "main.js.map": "/the-shoppies-award/static/js/main.d4d7328f.chunk.js.map",
     "runtime-main.js": "/the-shoppies-award/static/js/runtime-main.ee5b6b69.js",
     "runtime-main.js.map": "/the-shoppies-award/static/js/runtime-main.ee5b6b69.js.map",
     "static/js/2.031a25d1.chunk.js": "/the-shoppies-award/static/js/2.031a25d1.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.ee5b6b69.js",
     "static/js/2.031a25d1.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.16405f54.chunk.js"
+    "static/js/main.d4d7328f.chunk.js"
   ]
 }
